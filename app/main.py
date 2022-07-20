@@ -16,7 +16,6 @@ class MongoJsonEncoder(JSONEncoder):
 
 
 app = Flask(__name__)
-app.config['MONGO_URI'] = os.environ.get('MONGO_URI', '')
 CORS(app)
 app.json_encoder = MongoJsonEncoder
 app.register_blueprint(books_api_v1)
