@@ -12,6 +12,3 @@ if __name__ == "__main__":
     app.config['DEBUG'] = True
     app.config['MONGO_URI'] = os.environ.get('MONGO_URI','')
     app.run()
-else:
-    app.config['MONGO_URI'] = os.environ.get('MONGO_URI','')
-    app.run()
