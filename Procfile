@@ -1,1 +1,1 @@
-web: gunicorn wsgi:bookmanagement/api
+web: gunicorn run:app

@@ -1,17 +1,24 @@
-from crypt import methods
-from venv import create
 from flask import Blueprint, request, jsonify
-from bookmanagement.db import  rentGenerated, createBook, searchBook, searchBookWithRange, searchBookWithFields, issueBook, returnBook, bookIssued, rentGenerated, booksIssuedOnPersonName, booksIssuedInDateRange
+# from database import  rentGenerated, createBook, searchBook, searchBookWithRange, searchBookWithFields, issueBook, returnBook, bookIssued, rentGenerated, booksIssuedOnPersonName, booksIssuedInDateRange
+from flask.json import JSONEncoder
 
 from flask_cors import CORS
-from bookmanagement.api.utils import expect
-from datetime import datetime
+from bson import json_util, ObjectId
+from datetime import datetime, timedelta
+from app.database import *
+
+
+
+
+
+
 
 
 books_api_v1 = Blueprint(
     'books_api_v1', 'books_api_v1', url_prefix='/api/v1/books')
 
-CORS(books_api_v1)
+# CORS(books_api_v1)
+
 
 
 @books_api_v1.route('/create', methods=["POST"])
@@ -85,3 +92,8 @@ def books_issued_in_date_range():
     end_date = request.args.get('end_date')
     res = booksIssuedInDateRange(start_date, end_date)
     return jsonify(res)
+
+
+# @app.route('/<path:path>')
+# def serve(path):
+#     return "invalid path"
