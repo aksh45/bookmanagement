@@ -1,1 +1,1 @@
-web: python3 run.py
+web: gunicorn run:create_app

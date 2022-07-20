@@ -9,7 +9,7 @@ from flask_cors import CORS
 from bson import json_util, ObjectId
 from datetime import datetime, timedelta
 
-from bookmanagement.api.books import books_api_v1
+from bookmanagement.api.main import books_api_v1
 
 
 class MongoJsonEncoder(JSONEncoder):
@@ -37,6 +37,6 @@ def create_app():
     @app.route('/', defaults={'path': ''})
     @app.route('/<path:path>')
     def serve(path):
-        return render_template('index.html')
+        return "invalid path"
 
     return app
