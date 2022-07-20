@@ -4,6 +4,7 @@ from bson import json_util, ObjectId
 from flask_cors import CORS
 from app.blueprint_api  import books_api_v1
 from flask.json import JSONEncoder
+import os
 
 class MongoJsonEncoder(JSONEncoder):
     def default(self, obj):
@@ -15,6 +16,7 @@ class MongoJsonEncoder(JSONEncoder):
 
 
 app = Flask(__name__)
+app.config['MONGO_URI'] = os.environ.get('MONGO_URI', '')
 CORS(app)
 app.json_encoder = MongoJsonEncoder
 app.register_blueprint(books_api_v1)
